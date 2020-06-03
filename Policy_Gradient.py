@@ -1,35 +1,23 @@
-#  OpenAI 짐 설치
+# %%
+import tensorflow as tf
+from tensorflow import keras 
+import gym 
+import matplotlib
+import matplotlib.pyplot as plt
+import time
+import numpy as np
+# %%
+# env = gym.make("CartPole-v1") # gym.make("환경 명") : 환경을 선언해준다. 
+# obs = env.reset() # 환경을 초기화해준다.
+# obs
 
-### <U> Note. 본 글은 (1) 오렐리아 제롱의 "핸즈온 머신러닝 (2판)", (2) 이웅렬 외 4인의 "파이썬과 케라스로 배우는 강화학습", (3) 리처트 서튼 & 앤드류 바르토의 "단단한 강화학습"을 참고하여 작성되었습니다. </U>
 
-## 1) OpenAI 짐 설치
-
-강화학습에서 어려운 점은 에이전트를 훈련시키는 작업 환경을 마련해야 한다는 것이다. 그리고 아마 이것이 현재 많은 강화학습 연구들이 현실의 문제해결에 적용되는 방향이 아니라 Benchmark 문제를 해결하는 방향으로 진행되는 이유일 것이다. 
-
-필자는 "강화학습 연구"가 (현실문제와 많이 동떨어진) 현실의 문제가 단순화 된 Benchmark 문제를 대상으로 추상적 이론연구에 전착하는 것을 경계해야 하며 복잡한 현실의 문제를 해결했을 때 비로소 의미가 있다고 보는 입장이다. 
-
-한편 "강화학습 공부"의 관점에서 보면 얘기가 달라진다. 고전 이론부터 현대의 고도화 된 이론까지 전부 이해하기도 벅찬 마당에 복잡한 현실의 문제까지 고려하는 것은 입문자에게 끔찍한 일이라고 생각한다. 즉, 공부를 위해선 Benchmark 문제를 활용하는 것이 오히려 유효하다고 생각한다. 
-
-따라서 앞으로 강화학습을 공부하며 작성한 내용과 코드들은 Benchmark 문제에 기반할 것이다.  강화학습 시뮬레이션 환경을 제공하는 오픈소스 라이브러리 OpenAI gym은 강화학습이 적용되는 대표적인 Benchmark 문제 환경들 (예. 아타리 게임, 보드 게임, 2D와 3D 물리 시뮬레이션 등)을 제공한다. 
-
-아나콘다 서버 유저의 경우 터미널에 `conda activate 'name_virtualenv'`를 입력하여 OpenAI gym이 설치될 가상환경을 활성화 해준뒤 `pip install -user gym`를 입력하면 파이썬에 OpenAI gym 환경을 설치할 수 있다. 그 다음 아래와 같은 코드를 실행하면 강화학습 오픈소스 시뮬레이션 환경을 불러올 수 있다. 
-```python
-import gym
-env = gym.make("CartPole-v1") # gym.make("환경 명") : 환경을 선언해준다. 
-obs = env.reset() # 환경을 초기화해준다.
-obs
+# %%
+env = gym.make("CartPole-v1") # gym.make("환경 명") : 환경을 호출해준다.
 env.action_space # 호출된 환경 (현재는 "CartPole-v1")에서 가능한 행위공간을 보여준다.
                  # Discrete(2)는 가능한 행동이 0, 1 두 가지 정수임을 의미한다.
-```
-- 필자는 `CartPole-v1` 환경을 불러보았다. 
-- `env.reset()`을 통해 환경내 모든 변수를 초기화 해주었다.
-- `obs`는 환경에서 관측되는 "상태"를 의미한다. `obs`를 실행하면 4 개의 실수를 담은 1D 넘파이 배열 `array([x, y, z, w])`을 반환하는데 x, y, z, w는 각각은 (1) 카트의 수평 위치, (2) 카트의 속도, 막대의 각도, 막대의 각속도를 나타낸다. 
-- `env.action_space`를 통해 주어진 문제에서 정의된 행위공간을 확인할 수 있다.
+                 # 
 
-
-아래의 코드는 정책함수 (Policy)를 정의한 뒤 정책함수를 따라 결정되는 매 step의 행위 (aciton)를 결정하여 500회의 에피소드를 수행하는 코드이다.
-
-```python
 # %%
 # ! main() 메인함수가 정의된 script block은 반드시 python script를 실행하여 구동하여야 한다.
 # ! 그 이유는 Jupyter Notebook, vs-code 등 프로그래밍 익스텐션 내에는 
@@ -87,10 +75,8 @@ if __name__ == "__main__": # __name__ 은 python에서 내부적으로 사용하
                            # 요약하자면, 모듈 활성화와 실행을 구분하기 위해 if __name__ = "__main__" 구문을 마지막에 추가한다고 생각하면 된다.
 
     main()  # 본 script 파일을 실행하면 (python Policy_Gradient.py) main() 함수를 호출하여라.
-```
 
-위의 코드를 실행하면 [그림1]처럼 카트폴이 양옆으로 움직이며 중심을 잡는 시뮬레이션 과정이 실행된다.
 
-<p aligh = "center"><img src = "https://user-images.githubusercontent.com/61273017/83596259-2bb6ba00-a59f-11ea-821c-c439f2d458aa.png" width = "600" height = "200"></p>
-<p align = "center">[그림1] 카트폴 시뮬레이션 </p>
+# %%
 
+# %%
