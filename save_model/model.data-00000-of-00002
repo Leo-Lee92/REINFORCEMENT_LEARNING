@@ -1,0 +1,30 @@
+Ü1|Žì
+
+fc1
+fc2
+
+fc_out
+
+
+kernel
+bias
+
+
+kernel
+bias
+
+
+kernel
+	bias
+QO
+VARIABLE_VALUEreinforce/dense/kernel%fc1/kernel/.ATTRIBUTES/VARIABLE_VALUE
+MK
+VARIABLE_VALUEreinforce/dense/bias#fc1/bias/.ATTRIBUTES/VARIABLE_VALUE
+SQ
+VARIABLE_VALUEreinforce/dense_1/kernel%fc2/kernel/.ATTRIBUTES/VARIABLE_VALUE
+OM
+VARIABLE_VALUEreinforce/dense_1/bias#fc2/bias/.ATTRIBUTES/VARIABLE_VALUE
+VT
+VARIABLE_VALUEreinforce/dense_2/kernel(fc_out/kernel/.ATTRIBUTES/VARIABLE_VALUE
+RP
+VARIABLE_VALUEreinforce/dense_2/bias&fc_out/bias/.ATTRIBUTES/VARIABLE_VALUE

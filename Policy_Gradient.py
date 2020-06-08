@@ -6,6 +6,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import time
 import numpy as np
+
 # %%
 # env = gym.make("CartPole-v1") # gym.make("환경 명") : 환경을 선언해준다. 
 # obs = env.reset() # 환경을 초기화해준다.
@@ -77,6 +78,3 @@ if __name__ == "__main__": # __name__ 은 python에서 내부적으로 사용하
     main()  # 본 script 파일을 실행하면 (python Policy_Gradient.py) main() 함수를 호출하여라.
 
 
-# %%
-
-# %%
